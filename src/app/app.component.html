@@ -1,0 +1,52 @@
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">{{title}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+
+  <h1 class="mt-5">This is a ngx-bootstrap app</h1>
+  <p class="lead">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born
+    and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the
+    truth, the master-builder of human happiness.
+  </p>
+  <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how
+    to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves
+    or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in
+    which toil and pain can procure him some great pleasure.</p>
+
+  <div class="btn-group" dropdown>
+    <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+      Button dropdown <span class="caret"></span>
+    </button>
+    <ul *dropdownMenu class="dropdown-menu" role="menu">
+      <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+      <li class="divider dropdown-divider"></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+      </li>
+    </ul>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">Version: {{version}}-{{buildTimestamp}}</span>
+  </div>
+</footer>
