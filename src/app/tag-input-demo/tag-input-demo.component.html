@@ -1,0 +1,57 @@
+<div class="card mt-2">
+  <div class="card-header">
+    <h5>TagInputComponent Demo</h5>
+  </div>
+  <div class="card-body">
+    <dl class="row">
+      <dt class="col-sm-3">Multi select:</dt>
+      <dd class="col-sm-9">
+        <app-tag-input
+        placeholder="select multiple items"
+        [availableValues]="availableItems"
+        [value]="tagValues[0]">
+      </app-tag-input>
+      </dd>
+
+      <dt class="col-sm-3">Single select:</dt>
+      <dd class="col-sm-9">
+        <app-tag-input
+          placeholder="select one item"
+          [availableValues]="availableItems"
+          [value]="tagValues[1]"
+          [isMultiselect]="false">
+        </app-tag-input>
+      </dd>
+
+      <dt class="col-sm-3">Switch: </dt>
+      <dd class="col-sm-9">
+        <app-tag-input
+          placeholder="select one item"
+          [availableValues]="availableItems"
+          [value]="tagValues[2]"
+          [isMultiselect]="isMultiSelect">
+          <div class="input-group-prepend">
+            <app-text-switch class="input-group-text" onText="multi" offText="single" prependText="select" [(value)]="isMultiSelect"></app-text-switch>
+          </div>
+        </app-tag-input>
+      </dd>
+
+      <dt class="col-sm-3">With 'invalid' item: </dt>
+      <dd class="col-sm-9">
+        <app-tag-input
+          placeholder="select one item"
+          [availableValues]="availableItems"
+          [value]="tagValues[3]"
+          [isMultiselect]="isMultiSelect">
+          <div class="input-group-prepend">
+            <button class="btn btn-default btn-outline-dark" (click)="tagValues[3].push(randomItem())">add random item</button>
+          </div>
+        </app-tag-input>
+      </dd>
+    </dl>
+
+    <br>
+    <pre>{{tagValues | json}}</pre>
+  </div>
+
+</div>

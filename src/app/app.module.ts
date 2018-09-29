@@ -6,11 +6,15 @@ import {AppComponent} from './app.component';
 import {TextSwitchModule} from './text-switch/text-switch.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import { TextSwitchDemoComponent } from './text-switch-demo/text-switch-demo.component';
+import {TagInputComponent} from './tag-input/tag-input.component';
+import { TagInputDemoComponent } from './tag-input-demo/tag-input-demo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TextSwitchDemoComponent
+    TextSwitchDemoComponent,
+    TagInputComponent,
+    TagInputDemoComponent
   ],
   imports: [
     BrowserModule,

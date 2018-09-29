@@ -1,0 +1,54 @@
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+
+.form-control {
+  display: block;
+  padding: 0;
+
+  min-height: $input-height;
+  height:auto;
+
+  .tags {
+    padding: 1px;
+    overflow: inherit;
+    word-wrap: break-word;
+    cursor: text;
+
+    .tag-list {
+      margin: 0;
+      padding: ($spacer * .25);
+      list-style-type: none;
+    }
+
+    .tag-item {
+      margin: ($spacer * .25);
+      padding-left: $badge-pill-padding-x;
+      padding-right: $badge-pill-padding-x;
+      border-radius: $badge-pill-border-radius;
+      //display: inline-block;
+      float: left;
+      white-space: nowrap;
+      vertical-align: baseline;
+
+      color: color-yiq(theme-color("primary"));
+      background-color: theme-color("primary");
+    }
+
+    .tag-item.unavailable {
+      color: color-yiq(theme-color("warning"));
+      background-color: theme-color("warning");
+    }
+
+    .tag-remove-button {
+      cursor: pointer;
+    }
+
+    .placeholder {
+      margin: ($spacer * .25);
+      float: left;
+      white-space: nowrap;
+      vertical-align: baseline;
+      background: unset;
+    }
+  }
+}
+
