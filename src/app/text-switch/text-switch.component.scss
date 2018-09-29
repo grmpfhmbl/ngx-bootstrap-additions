@@ -1,0 +1,50 @@
+//@import '../../../variables';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+
+:host.is-invalid > span:not(.disabled) > .switch-item.active {
+    color: $form-feedback-invalid-color;
+}
+:host.is-valid > span:not(.disabled) > .switch-item.active {
+    color: $form-feedback-valid-color;
+}
+
+.switch-item {
+  color: $gray-400;
+  cursor: pointer;
+  margin-left: 0.05rem;
+  margin-right: 0.05rem;
+
+  &.disabled {
+    cursor: not-allowed !important;
+    color: $gray-200 !important;
+  }
+
+  &.active {
+    color: $link-color;
+  }
+
+  &:first-child {
+    margin-right: $spacer*.25;
+  }
+  &:last-child {
+    margin-left: $spacer*.25;
+  }
+}
+
+.caret-left {
+  @include caret(left);
+
+  &:before {
+    margin-right: 0;
+    vertical-align: baseline;
+  }
+}
+
+.caret-right {
+  @include caret(right);
+
+  &:after {
+    margin-left: 0;
+    vertical-align: baseline;
+  }
+}

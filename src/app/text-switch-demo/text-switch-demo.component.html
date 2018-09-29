@@ -1,0 +1,100 @@
+<div class="card mt-2">
+  <div class="card-header">
+    <h5>TextSwitchComponent Demo</h5>
+  </div>
+  <div class="card-body">
+    <dl class="row">
+      <dt class="col-sm-3">The Default:</dt>
+      <dd class="col-sm-9">
+        <app-text-switch [(value)]="myModel.default"></app-text-switch>
+      </dd>
+
+      <dt class="col-sm-3">Change texts:</dt>
+      <dd class="col-sm-9">
+        <app-text-switch [(value)]="myModel['text-change']"
+                         prependText="use this to " appendText="the next switch"
+                         onText="enable" offText="disable">
+        </app-text-switch>
+        <br>
+      </dd>
+
+      <dt class="col-sm-3">Use FontAwesome:</dt>
+      <dd class="col-sm-9">
+        <app-text-switch [(value)]="myModel['font-awesome']"
+                         prependText="turn me" appendText="by clicking"
+                         onText="left" offText="right"
+                         caretLeftClass="fa fa-caret-left" caretRightClass="fa fa-caret-right"
+                         [disabled]="!myModel['text-change']"></app-text-switch>
+        <br>
+      </dd>
+
+      <dt class="col-sm-3">Embed in other elements:</dt>
+      <dd class="col-sm-9">
+          <span class="badge badge-dark">
+            <app-text-switch [(value)]="myModel['in-badge']"
+                             prependText="Like me?"
+                             onText="yes" offText="no"
+                             caretLeftClass="fa fa-caret-left" caretRightClass="fa fa-caret-right"></app-text-switch>
+          </span>
+        <span class="badge badge-warning ml-2">
+            <b>TODO: </b> make styling nicer.
+          </span>
+      </dd>
+
+      <dt class="col-sm-3">Custom datatype / values:</dt>
+      <dd class="col-sm-9">
+          <span class="badge badge-dark">
+            <app-text-switch [(value)]="myModel['custom-value']"
+                             prependText="Like me?"
+                             onText="I like!" offText="Naaahhhh!"
+                             switchOnValue="I like!"
+                             switchOffValue="Naaahhhh!"
+                             caretLeftClass="fa fa-caret-left" caretRightClass="fa fa-caret-right"
+            ></app-text-switch>
+          </span>
+        <span class="badge badge-warning ml-2">
+            <b>TODO: </b> make styling nicer.
+          </span>
+      </dd>
+
+      <dt class="col-sm-3">Reactive Form input:</dt>
+      <dd class="col-sm-9">
+        <form [formGroup]="formModel">
+          <app-text-switch formControlName="enableConsentSwitch"
+                           prependText="Enable the switch below: "
+                           onText="enable" offText="disable"
+                           caretLeftClass="fa fa-caret-left" caretRightClass="fa fa-caret-right"
+          ></app-text-switch>
+          <br>
+          <div class="form-group">
+            <app-text-switch id="consent"
+                             formControlName="consentSwitch"
+                             prependText="Please consent: "
+                             onText="I do" offText="Nope"
+                             class="form-control"
+                             [ngClass]="{'is-invalid': f.consentSwitch.errors && !f.consentSwitch.disabled,
+                                          'is-valid': !f.consentSwitch.errors && !f.consentSwitch.disabled}"
+                             caretLeftClass="fa fa-caret-left" caretRightClass="fa fa-caret-right"
+            ></app-text-switch>
+            <div class="invalid-feedback">You need to consent</div>
+          </div>
+        </form>
+      </dd>
+
+    </dl>
+
+    <div class="row">
+      <div class="col-6">
+        <h5>Normal value binding</h5>
+        <pre>{{myModel | json}}</pre>
+      </div>
+      <div class="col-6">
+        <h5>Reactive Form</h5>
+        <pre>enableConsentSwitch: {{f.enableConsentSwitch.value | json}}
+consentSwitch: {{f.consentSwitch.value | json}}
+consentSwitch invalid?: {{f.consentSwitch.invalid | json}}
+          </pre>
+      </div>
+    </div>
+  </div>
+</div>

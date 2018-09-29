@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { environment } from '../environments/environment';
+import {Component} from '@angular/core';
+import {environment} from '../environments/environment';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',

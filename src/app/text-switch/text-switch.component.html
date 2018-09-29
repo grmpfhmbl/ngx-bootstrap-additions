@@ -1,0 +1,9 @@
+<span [class.disabled]="disabled">
+  {{prependText}}
+  <span class="switch-item" [class.disabled]="disabled" [class.active]="state"  (click)="toggle(true)">{{onText}}</span>
+  <i class="switch-item"    [class.disabled]="disabled" [class.active]="state"  [ngClass]="caretLeftClass"  (click)="toggle(!state)"></i>
+  <i class="switch-item"    [class.disabled]="disabled" [class.active]="!state" [ngClass]="caretRightClass" (click)="toggle(!state)"></i>
+  <span class="switch-item" [class.disabled]="disabled" [class.active]="!state" [ngClass]="{'active': !state}" (click)="toggle(false)">{{offText}}</span>
+  {{appendText}}
+</span>
+
