@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ITagInputItems} from '../tag-input/tag-input.component';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-tag-input-demo',
@@ -16,11 +17,21 @@ export class TagInputDemoComponent implements OnInit {
 
   invalidItem: ITagInputItems = {value: 'barbaz', text: 'barbaz'};
 
-  tagValues: Array<Array<ITagInputItems>> = [[], [], [], [this.invalidItem]];
+  tagValues: Array<Array<ITagInputItems>> = [[], [], [], [this.invalidItem], []];
 
   isMultiSelect = true;
+  isEnabled = false;
 
-  constructor() {
+  formModel: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.formModel = this.formBuilder.group({
+      tagsOne: [[], Validators.required]
+    });
+  }
+
+  get f(): { [p: string]: AbstractControl } {
+    return this.formModel.controls;
   }
 
   ngOnInit() {

@@ -7,10 +7,10 @@
       <dt class="col-sm-3">Multi select:</dt>
       <dd class="col-sm-9">
         <app-tag-input
-        placeholder="select multiple items"
-        [availableValues]="availableItems"
-        [value]="tagValues[0]">
-      </app-tag-input>
+          placeholder="select multiple items"
+          [availableValues]="availableItems"
+          [value]="tagValues[0]">
+        </app-tag-input>
       </dd>
 
       <dt class="col-sm-3">Single select:</dt>
@@ -19,39 +19,87 @@
           placeholder="select one item"
           [availableValues]="availableItems"
           [value]="tagValues[1]"
-          [isMultiselect]="false">
+          [multiselect]="false">
         </app-tag-input>
       </dd>
 
-      <dt class="col-sm-3">Switch: </dt>
+      <dt class="col-sm-3">Switch:</dt>
       <dd class="col-sm-9">
         <app-tag-input
-          placeholder="select one item"
+          placeholder="select item(s)"
           [availableValues]="availableItems"
           [value]="tagValues[2]"
-          [isMultiselect]="isMultiSelect">
+          [multiselect]="isMultiSelect">
           <div class="input-group-prepend">
-            <app-text-switch class="input-group-text" onText="multi" offText="single" prependText="select" [(value)]="isMultiSelect"></app-text-switch>
+            <app-text-switch class="input-group-text" onText="multi" offText="single" prependText="select"
+                             [(value)]="isMultiSelect"></app-text-switch>
           </div>
         </app-tag-input>
       </dd>
 
-      <dt class="col-sm-3">With 'invalid' item: </dt>
+      <dt class="col-sm-3">With 'invalid' item:</dt>
       <dd class="col-sm-9">
         <app-tag-input
-          placeholder="select one item"
+          placeholder="select items"
           [availableValues]="availableItems"
           [value]="tagValues[3]"
-          [isMultiselect]="isMultiSelect">
+          [multiselect]="isMultiSelect">
           <div class="input-group-prepend">
-            <button class="btn btn-default btn-outline-dark" (click)="tagValues[3].push(randomItem())">add random item</button>
+            <button class="btn btn-default btn-outline-dark" (click)="tagValues[3].push(randomItem())">add random item
+            </button>
           </div>
         </app-tag-input>
       </dd>
-    </dl>
 
-    <br>
-    <pre>{{tagValues | json}}</pre>
+      <dt class="col-sm-3">Disabled input:</dt>
+      <dd class="col-sm-9">
+        <app-tag-input
+          placeholder="select items"
+          [availableValues]="availableItems"
+          [value]="tagValues[4]"
+          [multiselect]="isMultiSelect"
+          [disabled]="!isEnabled">
+          <div class="input-group-prepend">
+            <app-text-switch class="input-group-text" onText="enabled" offText="disabled"
+                             [(value)]="isEnabled"></app-text-switch>
+          </div>
+        </app-tag-input>
+      </dd>
+
+      <dt class="col-sm-3">With reactive forms:</dt>
+      <dd class="col-sm-9">
+        <form [formGroup]="formModel">
+          <div class="form-group">
+            <app-tag-input
+              class="form-control"
+              placeholder="tagsOne"
+              [availableValues]="availableItems"
+              [multiselect]="isMultiSelect"
+              formControlName="tagsOne"
+              [ngClass]="{'is-invalid': f.tagsOne.errors,
+                          'is-valid': !f.tagsOne.errors}"
+            >
+            </app-tag-input>
+            <div class="invalid-feedback" [class.d-block]="">You need to select at least one item!</div>
+          </div>
+        </form>
+      </dd>
+    </dl>
   </div>
+
+  <div class="row">
+    <div class="col-6">
+      <h5>Normal value binding</h5>
+      <pre>{{tagValues | json}}</pre>
+    </div>
+    <div class="col-6">
+      <h5>Reactive Form</h5>
+      <pre>
+tagsOne: {{f.tagsOne.value | json}}
+         {{f.tagsOne.valid | json }}
+      </pre>
+    </div>
+  </div>
+
 
 </div>

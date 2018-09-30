@@ -20,8 +20,6 @@ export const TEXT_SWITCH_VALUE_ACCESSOR: any = {
   providers: [TEXT_SWITCH_VALUE_ACCESSOR]
 })
 export class TextSwitchComponent implements ControlValueAccessor, OnInit {
-  // @ViewChild(NgModel) model: NgModel;
-
   @Input() prependText = '';
   @Input() appendText = '';
 

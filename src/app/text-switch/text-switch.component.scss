@@ -3,6 +3,7 @@
 :host.is-invalid > span:not(.disabled) > .switch-item.active {
     color: $form-feedback-invalid-color;
 }
+
 :host.is-valid > span:not(.disabled) > .switch-item.active {
     color: $form-feedback-valid-color;
 }

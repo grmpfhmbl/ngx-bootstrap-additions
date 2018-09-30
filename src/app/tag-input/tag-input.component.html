@@ -1,17 +1,18 @@
 <div class="input-group">
   <ng-content select=".input-group-prepend"></ng-content>
 
-  <div class="form-control">
+  <div class="form-control" [class.disabled]="disabled" [class.is-invalid]="isInvalidClass">
       <div class="tags">
         <ul class="tag-list">
-          <li class="placeholder">{{placeholder}}</li>
+          <li class="placeholder" [class.disabled]="disabled">{{placeholder}}</li>
           <li *ngFor="let item of value, let i = index"
               class="tag-item"
-              [ngClass]="{'unavailable': isValueUnavailableClass[i]}">{{item.text}} <i class="fa fa-trash-o tag-remove-button" (click)="removeItem(item)"></i></li>
+              [class.unavailable]="isValueUnavailableClass[i]"
+              [class.disabled]="disabled">{{item.text}} <i class="fa fa-trash-o tag-remove-button" [class.disabled]="disabled" (click)="removeItem(item)"></i></li>
         </ul>
       </div>
   </div>
-  <div class="input-group-append" dropdown placement="bottom right">
+  <div class="input-group-append" dropdown placement="bottom right" [isDisabled]="disabled">
     <button id="button-basic" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
             aria-controls="dropdown-basic">
     </button>
@@ -26,7 +27,7 @@
     </ul>
   </div>
   <div class="input-group-append">
-    <button type="button" class="btn btn-outline-dark" (click)="clearSelection()">Clear</button>
+    <button type="button" class="btn btn-outline-dark" [disabled]="disabled" (click)="clearSelection()">Clear</button>
   </div>
 
   <ng-content select=".input-group-append"></ng-content>

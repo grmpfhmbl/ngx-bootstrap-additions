@@ -1,5 +1,23 @@
 @import '../../../node_modules/bootstrap/scss/bootstrap';
 
+.btn:disabled {
+  cursor: not-allowed;
+  background-color: $input-disabled-bg;
+}
+
+:host.form-control {
+  padding:0;
+  border:none;
+}
+
+:host.is-invalid .form-control {
+  border-color: $form-feedback-invalid-color;
+}
+
+:host.is-valid .form-control {
+  border-color: $form-feedback-valid-color;
+}
+
 .form-control {
   display: block;
   padding: 0;
@@ -7,15 +25,29 @@
   min-height: $input-height;
   height:auto;
 
+  &.disabled {
+    background-color: $input-disabled-bg;
+  }
+
+  .placeholder {
+    margin: ($spacer * .25);
+    margin-left: ($spacer * 0.5);
+    float: left;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background: unset;
+    color: $input-color;
+  }
+
   .tags {
-    padding: 1px;
+    padding: ($spacer*.125);
     overflow: inherit;
     word-wrap: break-word;
     cursor: text;
 
     .tag-list {
       margin: 0;
-      padding: ($spacer * .25);
+      padding:0;
       list-style-type: none;
     }
 
@@ -31,23 +63,23 @@
 
       color: color-yiq(theme-color("primary"));
       background-color: theme-color("primary");
-    }
 
-    .tag-item.unavailable {
-      color: color-yiq(theme-color("warning"));
-      background-color: theme-color("warning");
+      &.unavailable {
+        color: color-yiq(theme-color("warning"));
+        background-color: theme-color("warning");
+      }
+      &.disabled {
+        color: $btn-link-disabled-color;
+        background-color: darken($input-disabled-bg, 15%);
+      }
     }
 
     .tag-remove-button {
       cursor: pointer;
-    }
 
-    .placeholder {
-      margin: ($spacer * .25);
-      float: left;
-      white-space: nowrap;
-      vertical-align: baseline;
-      background: unset;
+      &.disabled {
+        cursor: not-allowed !important;
+      }
     }
   }
 }
